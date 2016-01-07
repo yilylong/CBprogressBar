@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="percent_text_color_default">#009ACD</color>
+    <color name="percent_text_color">#3CB371</color>
+    <color name="percent_text_color_2">#A2CD5A</color>
+    <color name="progressbar_bg_color_default">#636363</color>
+    <color name="progress_color_default">#00C5CD</color>
+    <color name="progressbar_bg_color_1">#737373</color>
+    <color name="progress_color_1">#3CB371</color>
+    <color name="bg">#CDB5CD</color>
+</resources>

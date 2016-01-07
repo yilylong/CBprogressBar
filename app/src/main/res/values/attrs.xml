@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 进度百分比文字大小 -->
+    <attr name="percent_text_size" format="dimension" />
+    <!-- 圆形进度条边框大小 -->
+    <attr name="stroke_width" format="dimension" />
+    <!-- 矩形进度条 四周圆角大小 -->
+    <attr name="rect_round" format="dimension" />
+    <!-- 矩形进度条 是空心样式还是实心样式 -->
+    <attr name="isHorizonStroke" format="boolean" />
+    <!-- 进度百分比文字颜色 -->
+    <attr name="percent_text_color" format="color|integer" />
+    <!-- 进度条背景颜色 -->
+    <attr name="progressBarBgColor" format="color|integer" />
+    <!-- 扇形进度条颜色 -->
+    <attr name="sectorColor" format="color|integer" />
+    <!-- 扇形背景颜色 -->
+    <attr name="unSweepColor" format="color|integer" />
+    <!-- 进度颜色 -->
+    <attr name="progressColor" format="color|integer" />
+    <!-- 进度条样式圆形还是矩形 -->
+    <attr name="orientation">
+        <enum name="horizontal" value="0"/>
+        <enum name="circle" value="1"/>
+        <enum name="sector" value="2"/>
+    </attr>
+    
+    <declare-styleable name="cbprogressbar">
+        <attr name="percent_text_size"/>
+        <attr name="isHorizonStroke"/>
+        <attr name="percent_text_color"/>
+        <attr name="progressBarBgColor"/>
+        <attr name="progressColor"/>
+        <attr name="sectorColor"/>
+        <attr name="unSweepColor"/>
+        <attr name="orientation"/>
+        <attr name="stroke_width"/>
+        <attr name="rect_round"/>
+    </declare-styleable>
+    
+</resources>
