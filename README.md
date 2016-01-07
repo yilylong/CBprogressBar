@@ -19,3 +19,5 @@ useage
         cb:progressBarBgColor="@color/progressbar_bg_color_1"
         cb:progressColor="@color/progress_color_1"
         cb:rect_round="@dimen/horizontal_corner" />
+
+具体属性功能下载demo后调试便知
