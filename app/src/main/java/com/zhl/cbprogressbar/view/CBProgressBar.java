@@ -168,7 +168,9 @@ public class CBProgressBar extends View {
         if (textWidth >= radius * 2) {
             textWidth = radius * 2;
         }
-        canvas.drawText(percent, centerX - textWidth / 2, centerY + textHeight / 2, piant);
+        Paint.FontMetrics metrics = paint.getFontMetrics();
+	float baseline = (getMeasuredHeight()-metrics.bottom+metrics.top)/2-metrics.top;
+	canvas.drawText(percent, centerX - textWidth / 2, baseline, piant);
 
     }
 
@@ -215,7 +217,9 @@ public class CBProgressBar extends View {
         if (textWidth >= getWidth()) {
             textWidth = getWidth();
         }
-        canvas.drawText(percent, centerX - textWidth / 2, centerY + textHeight / 2, piant);
+        Paint.FontMetrics metrics = paint.getFontMetrics();
+	float baseline = (getMeasuredHeight()-metrics.bottom+metrics.top)/2-metrics.top;
+	canvas.drawText(percent, centerX - textWidth / 2, baseline, piant);
 
     }
 
