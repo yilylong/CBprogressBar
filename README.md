@@ -5,7 +5,7 @@
 ImageProgressBar
 -
 
-<video src=''/>
+<video src='/imageprogressbar.mp4'/>
 
 
 
