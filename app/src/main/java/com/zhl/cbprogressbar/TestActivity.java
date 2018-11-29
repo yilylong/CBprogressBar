@@ -9,7 +9,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 import com.zhl.cbprogressbar.view.CBProgressBar;
-import com.zhl.cbprogressbar.view.CBbaseView;
 
 
 public class TestActivity extends Activity {
@@ -22,15 +21,12 @@ public class TestActivity extends Activity {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case UPDATE_PROGRESS:
-				cbProgress.updateProgress(msg.arg1);
-				cbProgress2.updateProgress(msg.arg1);
-				cbProgress3.updateProgress(msg.arg1);
+				cbProgress.setProgress(msg.arg1);
+				cbProgress2.setProgress(msg.arg1);
+				cbProgress3.setProgress(msg.arg1);
 				if(msg.arg1==100){
 					isDownloading = false;
 					btnDownload.setText("下载");
-					cbProgress.stopRender();
-					cbProgress2.stopRender();
-					cbProgress3.stopRender();
 				}
 				break;
 
@@ -49,9 +45,6 @@ public class TestActivity extends Activity {
 		cbProgress.setMax(100);
 		cbProgress2.setMax(100);
 		cbProgress3.setMax(100);
-		cbProgress.setRenderRate(CBbaseView.RENDER_RATE_NORMAL);
-		cbProgress2.setRenderRate(CBbaseView.RENDER_RATE_NORMAL);
-		cbProgress3.setRenderRate(CBbaseView.RENDER_RATE_NORMAL);
 		btnDownload =  (Button) this.findViewById(R.id.btn_download);
 		btnDownload.setText("下载");
 		btnDownload.setOnClickListener(new OnClickListener() {
@@ -62,15 +55,6 @@ public class TestActivity extends Activity {
 					stop = false;
 					isDownloading = true;
 					btnDownload.setText("停止");
-					if(!cbProgress.isRending()){
-						cbProgress.reStartRender();
-					}
-					if(!cbProgress2.isRending()){
-						cbProgress2.reStartRender();
-					}
-					if(!cbProgress3.isRending()){
-						cbProgress3.reStartRender();
-					}
 					downloading(cbProgress);
 					downloading(cbProgress2);
 					downloading(cbProgress3);

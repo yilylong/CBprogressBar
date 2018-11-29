@@ -18,6 +18,8 @@
     <attr name="unSweepColor" format="color|integer" />
     <!-- 进度颜色 -->
     <attr name="progressColor" format="color|integer" />
+    <!-- 进度文字是否显示百分号 -->
+    <attr name="showPercentSign" format="boolean"/>
     <!-- 进度条样式圆形还是矩形 -->
     <attr name="orientation">
         <enum name="horizontal" value="0"/>
@@ -36,6 +38,7 @@
         <attr name="orientation"/>
         <attr name="stroke_width"/>
         <attr name="rect_round"/>
+        <attr name="showPercentSign"/>
     </declare-styleable>
     
 </resources>

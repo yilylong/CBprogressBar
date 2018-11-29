@@ -10,6 +10,7 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.view.View;
 
 import com.zhl.cbprogressbar.R;
 
@@ -17,7 +18,7 @@ import com.zhl.cbprogressbar.R;
  * 自定义的progressBar
  * @author zhl
  */
-public class CBProgressBar extends CBbaseView {
+public class CBProgressBar extends View {
     private static final int STYLE_HORIZONTAL = 0;
     private static final int STYLE_ROUND = 1;
     private static final int STYLE_SECTOR=2;
@@ -87,6 +88,9 @@ public class CBProgressBar extends CBbaseView {
      * 水平进度圆角值
      **/
     private int rectRound=5;
+    /**进度文字是否显示百分号**/
+    private boolean showPercentSign;
+    private Paint mPaint;
 
     public CBProgressBar(Context context) {
         this(context, null);
@@ -109,29 +113,29 @@ public class CBProgressBar extends CBbaseView {
         rectRound = (int) array.getDimension(R.styleable.cbprogressbar_rect_round, rectRound);
         orientation = array.getInteger(R.styleable.cbprogressbar_orientation, STYLE_HORIZONTAL);
         isHorizonStroke = array.getBoolean(R.styleable.cbprogressbar_isHorizonStroke, false);
+        showPercentSign = array.getBoolean(R.styleable.cbprogressbar_showPercentSign, true);
 //		mBgpaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 //		mPrgpaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 //		mTextpaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         array.recycle();
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     }
 
 
+
     @Override
-    protected void render(Canvas canvas, Paint piant) {
+    protected void onDraw(Canvas canvas) {
         centerX = getWidth() / 2;
         centerY = getHeight() / 2;
         radius = centerX - strokeWidth / 2;
         if (orientation == STYLE_HORIZONTAL) {
-            drawHoriRectProgressBar(canvas, piant);
+            drawHoriRectProgressBar(canvas, mPaint);
         } else if(orientation == STYLE_ROUND) {
-            drawRoundProgressBar(canvas, piant);
+            drawRoundProgressBar(canvas, mPaint);
         }else{
-            drawSectorProgressBar(canvas, piant);
+            drawSectorProgressBar(canvas, mPaint);
         }
     }
-
-
-
 
     /**
      * 绘制圆形进度条
@@ -164,7 +168,9 @@ public class CBProgressBar extends CBbaseView {
         if (textWidth >= radius * 2) {
             textWidth = radius * 2;
         }
-        canvas.drawText(percent, centerX - textWidth / 2, centerY + textHeight / 2, piant);
+        Paint.FontMetrics metrics = paint.getFontMetrics();
+	float baseline = (getMeasuredHeight()-metrics.bottom+metrics.top)/2-metrics.top;
+	canvas.drawText(percent, centerX - textWidth / 2, baseline, piant);
 
     }
 
@@ -194,8 +200,8 @@ public class CBProgressBar extends CBbaseView {
                     ((progress * 100 / max) * getWidth()) / 100, centerY + getHeight() / 2), rectRound, rectRound, piant);
         }else{
             piant.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-            canvas.drawRect(new RectF(centerX - getWidth() / 2, centerY - getHeight() / 2,
-                    ((progress * 100 / max) * getWidth()) / 100, centerY + getHeight() / 2), piant);
+            canvas.drawRoundRect(new RectF(centerX - getWidth() / 2, centerY - getHeight() / 2,
+                    ((progress * 100 / max) * getWidth()) / 100, centerY + getHeight() / 2),rectRound, rectRound, piant);
             piant.setXfermode(null);
         }
 
@@ -211,7 +217,9 @@ public class CBProgressBar extends CBbaseView {
         if (textWidth >= getWidth()) {
             textWidth = getWidth();
         }
-        canvas.drawText(percent, centerX - textWidth / 2, centerY + textHeight / 2, piant);
+        Paint.FontMetrics metrics = paint.getFontMetrics();
+	float baseline = (getMeasuredHeight()-metrics.bottom+metrics.top)/2-metrics.top;
+	canvas.drawText(percent, centerX - textWidth / 2, baseline, piant);
 
     }
 
@@ -236,12 +244,12 @@ public class CBProgressBar extends CBbaseView {
         canvas.drawArc(oval,-90, 360 * progress / max, true, piant);
     }
 
-    public void updateProgress(int progress) {
+    public void setProgress(int progress) {
         if (progress > max) {
             progress = max;
         } else {
             this.progress = progress;
-//			postInvalidate();
+			postInvalidate();
         }
     }
 
