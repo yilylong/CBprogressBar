@@ -2,7 +2,8 @@
 一个简单的自定义进度条，支持三种样式
 ===========
 
-##ImageProgressBar
+ImageProgressBar
+---
 
 <image src='/imageprogressbar.gif'/>
 
