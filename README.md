@@ -4,11 +4,7 @@
 
 ##ImageProgressBar
 
-
-<video id="video" controls="" preload="none" poster="http://om2bks7xs.bkt.clouddn.com/2017-08-26-Markdown-Advance-Video.jpg">
-<source id="mp4" src="/imageprogressbar.mp4" type="video/mp4">
-</video>
-
+<iframe height=498 width=510 src='/imageprogressbar.mp4' frameborder=0 'allowfullscreen'></iframe>
 
 
 ![](https://raw.githubusercontent.com/yilylong/ImageResource/master/cbprogressbar.gif)  
