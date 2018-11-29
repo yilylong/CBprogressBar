@@ -4,7 +4,7 @@
 
 ##ImageProgressBar
 
-<iframe height=498 width=510 src='/imageprogressbar.mp4' frameborder=0 'allowfullscreen'></iframe>
+<image src='/imageprogressbar.gif'/>
 
 
 ![](https://raw.githubusercontent.com/yilylong/ImageResource/master/cbprogressbar.gif)  
